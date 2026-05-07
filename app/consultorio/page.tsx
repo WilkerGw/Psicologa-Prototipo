@@ -1,10 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import SectionTitle from "@/components/ui/SectionTitle";
 import Button from "@/components/ui/Button";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { MapPin, Clock, Phone } from "lucide-react";
+import Lightbox from "@/components/ui/Lightbox";
 
 const GALLERY_ITEMS = [
   { src: "/images/escritorio.webp", alt: "Ambiente de atendimento principal", span: "md:col-span-2" },
@@ -17,9 +19,42 @@ const GALLERY_ITEMS = [
 
 export default function ConsultorioPage() {
   const ref = useScrollReveal<HTMLDivElement>();
+  const [lightbox, setLightbox] = useState({ isOpen: false, index: 0 });
+
+  const openLightbox = (index: number) => {
+    setLightbox({ isOpen: true, index });
+  };
+
+  const closeLightbox = () => {
+    setLightbox({ ...lightbox, isOpen: false });
+  };
+
+  const prevImage = () => {
+    setLightbox((prev) => ({
+      ...prev,
+      index: (prev.index - 1 + GALLERY_ITEMS.length) % GALLERY_ITEMS.length,
+    }));
+  };
+
+  const nextImage = () => {
+    setLightbox((prev) => ({
+      ...prev,
+      index: (prev.index + 1) % GALLERY_ITEMS.length,
+    }));
+  };
 
   return (
     <div ref={ref}>
+      {/* Lightbox */}
+      <Lightbox
+        isOpen={lightbox.isOpen}
+        onClose={closeLightbox}
+        images={GALLERY_ITEMS}
+        currentIndex={lightbox.index}
+        onPrev={prevImage}
+        onNext={nextImage}
+      />
+
       {/* Hero */}
       <section className="bg-sage pt-32 pb-16 md:pt-36 md:pb-24">
         <div className="max-w-[1100px] mx-auto px-6 md:px-12 lg:px-20">
@@ -46,6 +81,7 @@ export default function ConsultorioPage() {
               <div
                 key={i}
                 className={`scroll-reveal relative overflow-hidden rounded-xl group cursor-pointer ${item.span}`}
+                onClick={() => openLightbox(i)}
               >
                 <div className="aspect-video md:aspect-auto md:h-[400px] relative overflow-hidden rounded-2xl border border-sage/10">
                   <Image
