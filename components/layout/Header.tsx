@@ -12,7 +12,6 @@ const NAV_LINKS = [
   { href: "/profissional", label: "Profissional" },
   { href: "/tratamentos", label: "Tratamentos" },
   { href: "/consultorio", label: "Consultório" },
-  { href: "/locacao", label: "Locação de Salas" },
   { href: "/contato", label: "Contato" },
 ];
 

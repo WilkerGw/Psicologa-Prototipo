@@ -19,13 +19,6 @@ const SERVICES = [
       "Atendimento via plataforma segura, de qualquer lugar do Brasil. A mesma qualidade, com mais flexibilidade.",
     badge: "Todo o Brasil",
   },
-  {
-    icon: KeyRound,
-    title: "Locação de Salas",
-    description:
-      "Salas equipadas disponíveis para outros profissionais de saúde em Tatuapé. Ambiente profissional e acessível.",
-    badge: "Para profissionais",
-  },
 ];
 
 export default function Services() {
