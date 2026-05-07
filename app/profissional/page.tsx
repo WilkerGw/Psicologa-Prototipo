@@ -85,7 +85,7 @@ export default function ProfissionalPage() {
               <div className="bg-blush-light rounded-2xl p-6 border border-sage/20">
                 <div className="relative aspect-square overflow-hidden rounded-2xl mb-6">
                   <Image
-                    src="/images/Vanessa-Tamiello.jpeg"
+                    src="/images/Vanessa-Tamiello.webp"
                     alt="Vanessa Tamiello — Psicóloga"
                     fill
                     className="object-cover object-top"
