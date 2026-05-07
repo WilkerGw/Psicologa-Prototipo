@@ -44,14 +44,14 @@ export default function ConsultorioGallery() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-rows-none lg:grid-rows-2 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:h-[650px] gap-4 md:gap-6">
           {GALLERY_IMAGES.map((img, i) => (
             <div
               key={img.src}
-              className={`scroll-reveal group relative overflow-hidden rounded-2xl shadow-lg shadow-sage/5 ${img.size}`}
+              className={`scroll-reveal group relative overflow-hidden rounded-2xl shadow-lg shadow-sage/5 h-[300px] md:h-[400px] lg:h-full ${img.size}`}
               style={{ transitionDelay: `${i * 150}ms` }}
             >
-              <div className="relative aspect-4/3 lg:aspect-auto lg:h-full w-full">
+              <div className="relative h-full w-full">
                 <Image
                   src={img.src}
                   alt={img.alt}
