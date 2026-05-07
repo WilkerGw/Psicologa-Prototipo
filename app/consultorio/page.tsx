@@ -1,16 +1,18 @@
 "use client";
 
+import Image from "next/image";
 import SectionTitle from "@/components/ui/SectionTitle";
 import Button from "@/components/ui/Button";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { MapPin, Clock, Phone } from "lucide-react";
 
 const GALLERY_ITEMS = [
-  { alt: "Recepção do consultório", span: "md:col-span-2" },
-  { alt: "Sala de atendimento principal", span: "" },
-  { alt: "Detalhe da decoração", span: "" },
-  { alt: "Vista da sala de espera", span: "" },
-  { alt: "Ambiente de terapia", span: "md:col-span-2" },
+  { src: "/images/escritorio.webp", alt: "Ambiente de atendimento principal", span: "md:col-span-2" },
+  { src: "/images/escritorio2.webp", alt: "Detalhes do consultório", span: "md:col-span-1" },
+  { src: "/images/escritorio3.webp", alt: "Ambiente de espera e recepção", span: "md:col-span-1" },
+  { src: "/images/escritorio4.webp", alt: "Detalhes decorativos", span: "md:col-span-1" },
+  { src: "/images/escritorio5.webp", alt: "Segunda sala de atendimento", span: "md:col-span-1" },
+  { src: "/images/escritorio6.webp", alt: "Vista geral do espaço", span: "md:col-span-3" },
 ];
 
 export default function ConsultorioPage() {
@@ -45,21 +47,20 @@ export default function ConsultorioPage() {
                 key={i}
                 className={`scroll-reveal relative overflow-hidden rounded-xl group cursor-pointer ${item.span}`}
               >
-                <div className="aspect-4/3 bg-linear-to-br from-sage/5 to-sage/10 rounded-2xl flex items-center justify-center border border-sage/10 overflow-hidden">
-                  <div className="text-center p-6">
-                    <div className="w-12 h-12 rounded-full bg-sage/20 flex items-center justify-center mx-auto mb-3">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6 text-sage-dark">
-                        <rect x="3" y="3" width="18" height="18" rx="2" />
-                        <circle cx="8.5" cy="8.5" r="1.5" />
-                        <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
-                      </svg>
-                    </div>
-                    <span className="font-body text-xs text-charcoal/40">
+                <div className="aspect-video md:aspect-auto md:h-[400px] relative overflow-hidden rounded-2xl border border-sage/10">
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-charcoal/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span className="text-ivory font-body text-xs italic">
                       {item.alt}
                     </span>
                   </div>
                 </div>
-                <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/10 transition-colors duration-300" />
               </div>
             ))}
           </div>

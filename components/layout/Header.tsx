@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useScrollHeader } from "@/hooks/useScrollHeader";
 import Button from "@/components/ui/Button";
 import { Menu, X } from "lucide-react";
@@ -18,52 +19,14 @@ const WHATSAPP_URL = "https://wa.me/5511981091524";
 
 function ButterflyLogo() {
   return (
-    <svg
-      viewBox="0 0 40 40"
-      fill="none"
-      className="w-9 h-9"
-      aria-hidden="true"
-    >
-      {/* Left wing */}
-      <path
-        d="M20 20C16 14 8 10 6 14C4 18 10 22 14 22C16 22 18 21 20 20Z"
-        fill="currentColor"
-        className="text-sage"
+    <div className="relative w-9 h-9">
+      <Image
+        src="/images/logo.webp"
+        alt="Vanessa Tamiello Logo"
+        fill
+        className="object-contain"
       />
-      <path
-        d="M20 20C16 22 10 28 12 31C14 34 20 30 20 26V20Z"
-        fill="currentColor"
-        className="text-sage-dark"
-      />
-      {/* Right wing */}
-      <path
-        d="M20 20C24 14 32 10 34 14C36 18 30 22 26 22C24 22 22 21 20 20Z"
-        fill="currentColor"
-        className="text-gold"
-      />
-      <path
-        d="M20 20C24 22 30 28 28 31C26 34 20 30 20 26V20Z"
-        fill="currentColor"
-        className="text-gold-dark"
-      />
-      {/* Body */}
-      <ellipse cx="20" cy="20" rx="1.2" ry="6" fill="currentColor" className="text-charcoal" />
-      {/* Antennae */}
-      <path
-        d="M19 14C17 10 15 9 14 9"
-        stroke="currentColor"
-        strokeWidth="0.8"
-        strokeLinecap="round"
-        className="text-charcoal"
-      />
-      <path
-        d="M21 14C23 10 25 9 26 9"
-        stroke="currentColor"
-        strokeWidth="0.8"
-        strokeLinecap="round"
-        className="text-charcoal"
-      />
-    </svg>
+    </div>
   );
 }
 

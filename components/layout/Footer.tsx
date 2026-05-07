@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 function InstagramIcon({ size = 18, className = "" }: { size?: number; className?: string }) {
   return (
@@ -26,13 +27,14 @@ export default function Footer() {
           {/* Column 1 — Identity */}
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-2.5">
-              <svg viewBox="0 0 40 40" fill="none" className="w-8 h-8" aria-hidden="true">
-                <path d="M20 20C16 14 8 10 6 14C4 18 10 22 14 22C16 22 18 21 20 20Z" className="fill-sage" />
-                <path d="M20 20C16 22 10 28 12 31C14 34 20 30 20 26V20Z" className="fill-sage/70" />
-                <path d="M20 20C24 14 32 10 34 14C36 18 30 22 26 22C24 22 22 21 20 20Z" className="fill-gold" />
-                <path d="M20 20C24 22 30 28 28 31C26 34 20 30 20 26V20Z" className="fill-gold/70" />
-                <ellipse cx="20" cy="20" rx="1.2" ry="6" className="fill-ivory/80" />
-              </svg>
+              <div className="relative w-8 h-8">
+                <Image
+                  src="/images/logo.webp"
+                  alt="Vanessa Tamiello Logo"
+                  fill
+                  className="object-contain brightness-0 invert"
+                />
+              </div>
               <span className="font-display text-lg text-ivory">
                 Vanessa Tamiello
               </span>

@@ -1,33 +1,12 @@
 "use client";
 
-import { useForm } from "react-hook-form";
 import SectionTitle from "@/components/ui/SectionTitle";
 import Button from "@/components/ui/Button";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { MapPin, Phone, Clock } from "lucide-react";
-
-interface ContactForm {
-  name: string;
-  email: string;
-  phone: string;
-  preference: string;
-  message: string;
-  privacy: boolean;
-}
+import { MapPin, Phone, Clock, MessageCircle } from "lucide-react";
 
 export default function ContatoPage() {
   const ref = useScrollReveal<HTMLDivElement>();
-  const { register, handleSubmit, formState: { errors } } = useForm<ContactForm>();
-
-  const onSubmit = (data: ContactForm) => {
-    const subject = encodeURIComponent("Contato pelo site — Vanessa Tamiello");
-    const body = encodeURIComponent(
-      `Nome: ${data.name}\nE-mail: ${data.email}\nTelefone: ${data.phone}\nPreferência: ${data.preference}\n\nMensagem:\n${data.message}`
-    );
-    window.location.href = `mailto:contato@psivanessatamiello.com?subject=${subject}&body=${body}`;
-  };
-
-  const inputStyles = "w-full bg-ivory border border-sage/40 rounded-xl px-4 py-3 font-body text-charcoal placeholder:text-charcoal/40 transition-all duration-200 focus:outline-none focus:border-sage focus:ring-2 focus:ring-sage/20";
 
   return (
     <div ref={ref}>
@@ -41,77 +20,76 @@ export default function ContatoPage() {
         </div>
       </section>
 
-      {/* Form + Info */}
+      {/* Info + WhatsApp CTA */}
       <section className="bg-ivory py-20 md:py-28">
         <div className="max-w-[1100px] mx-auto px-6 md:px-12 lg:px-20">
-          <div className="flex flex-col md:flex-row gap-12 lg:gap-16">
-            {/* Left — Form */}
-            <div className="scroll-reveal flex-1">
-              <h3 className="font-display text-xl font-semibold text-charcoal mb-6">Envie uma mensagem</h3>
-              <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-                <div>
-                  <label htmlFor="name" className="sr-only">Nome completo</label>
-                  <input id="name" type="text" placeholder="Nome completo *" className={inputStyles} {...register("name", { required: true })} />
-                  {errors.name && <span className="text-terracota text-xs mt-1">Campo obrigatório</span>}
+          <div className="flex flex-col md:flex-row gap-12 lg:gap-16 items-center">
+            {/* Left — WhatsApp Direct */}
+            <div className="scroll-reveal flex-1 flex flex-col gap-8">
+              <div className="flex flex-col gap-6">
+                <div className="w-14 h-14 bg-sage/10 rounded-2xl flex items-center justify-center text-sage">
+                  <MessageCircle size={32} />
                 </div>
-                <div>
-                  <label htmlFor="email" className="sr-only">E-mail</label>
-                  <input id="email" type="email" placeholder="E-mail *" className={inputStyles} {...register("email", { required: true })} />
-                  {errors.email && <span className="text-terracota text-xs mt-1">Campo obrigatório</span>}
-                </div>
-                <div>
-                  <label htmlFor="phone" className="sr-only">Telefone/WhatsApp</label>
-                  <input id="phone" type="tel" placeholder="Telefone / WhatsApp" className={inputStyles} {...register("phone")} />
-                </div>
-                <div>
-                  <label htmlFor="preference" className="sr-only">Preferência de atendimento</label>
-                  <select id="preference" className={`${inputStyles} cursor-pointer`} {...register("preference")}>
-                    <option value="">Como prefere ser atendido?</option>
-                    <option value="presencial">Presencial</option>
-                    <option value="online">Online</option>
-                    <option value="sem-preferencia">Sem preferência</option>
-                  </select>
-                </div>
-                <div>
-                  <label htmlFor="message" className="sr-only">Mensagem</label>
-                  <textarea id="message" rows={5} placeholder="Sua mensagem..." className={`${inputStyles} resize-none`} {...register("message")} />
-                </div>
-                <label className="flex items-start gap-2 cursor-pointer">
-                  <input type="checkbox" className="mt-1 accent-sage" {...register("privacy", { required: true })} />
-                  <span className="font-body text-xs text-charcoal/60">Li e concordo com a política de privacidade</span>
-                </label>
-                {errors.privacy && <span className="text-terracota text-xs">Aceite a política para continuar</span>}
-                <Button variant="primary" fullWidth>Enviar mensagem</Button>
-              </form>
+                <h3 className="font-display text-2xl md:text-3xl font-semibold text-charcoal leading-tight">
+                  Agendamento rápido e direto pelo WhatsApp
+                </h3>
+                <p className="font-body text-base md:text-lg text-charcoal/70 leading-relaxed max-w-md">
+                  Para sua comodidade, realizo todos os agendamentos e esclareço dúvidas diretamente pelo WhatsApp. 
+                  Clique no botão abaixo para iniciar uma conversa agora mesmo.
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button
+                  variant="whatsapp"
+                  href="https://wa.me/5511981091524"
+                  external
+                  size="lg"
+                  ariaLabel="Iniciar conversa no WhatsApp"
+                >
+                  Falar no WhatsApp agora
+                </Button>
+              </div>
             </div>
 
             {/* Right — Info Card */}
-            <div className="scroll-reveal md:w-[360px] shrink-0">
-              <div className="bg-charcoal text-ivory rounded-2xl p-8 flex flex-col gap-6">
-                <h3 className="font-display text-xl font-semibold">Informações</h3>
-                <div className="flex items-start gap-3">
-                  <MapPin size={18} className="text-gold mt-0.5 shrink-0" />
-                  <address className="not-italic font-body text-sm text-ivory/70 leading-relaxed">
-                    Rua Antonio de Barros, 2687, 1º andar<br />Tatuapé — São Paulo, SP
-                  </address>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Phone size={18} className="text-gold mt-0.5 shrink-0" />
-                  <a href="tel:+5511981091524" className="font-body text-sm text-ivory/70 hover:text-ivory transition-colors">(11) 98109.1524</a>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Clock size={18} className="text-gold mt-0.5 shrink-0" />
-                  <div className="font-body text-sm text-ivory/70">
-                    <p>Seg–Sex: 7h às 19h</p>
-                    <p>Sáb–Dom: 7h às 13h</p>
+            <div className="scroll-reveal md:w-[400px] shrink-0 w-full">
+              <div className="bg-charcoal text-ivory rounded-2xl p-8 md:p-10 flex flex-col gap-8 shadow-xl shadow-charcoal/20">
+                <h3 className="font-display text-xl font-semibold border-b border-ivory/10 pb-4">Informações de Contato</h3>
+                
+                <div className="flex flex-col gap-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-ivory/5 flex items-center justify-center shrink-0">
+                      <MapPin size={18} className="text-gold" />
+                    </div>
+                    <address className="not-italic font-body text-sm text-ivory/70 leading-relaxed">
+                      Rua Antonio de Barros, 2687, 1º andar<br />
+                      Tatuapé — São Paulo, SP
+                    </address>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-ivory/5 flex items-center justify-center shrink-0">
+                      <Phone size={18} className="text-gold" />
+                    </div>
+                    <a href="tel:+5511981091524" className="font-body text-sm text-ivory/70 hover:text-ivory transition-colors">
+                      (11) 98109.1524
+                    </a>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-ivory/5 flex items-center justify-center shrink-0">
+                      <Clock size={18} className="text-gold" />
+                    </div>
+                    <div className="font-body text-sm text-ivory/70">
+                      <p className="font-medium text-ivory/90 mb-1">Horário de Atendimento</p>
+                      <p>Seg–Sex: 7h às 19h</p>
+                      <p>Sáb–Dom: 7h às 13h</p>
+                    </div>
                   </div>
                 </div>
-                <div className="w-full h-px bg-gold/20" />
-                <Button variant="whatsapp" href="https://wa.me/5511981091524" external fullWidth ariaLabel="Falar no WhatsApp agora">
-                  Falar no WhatsApp agora
-                </Button>
-                <div className="h-px flex-1 bg-linear-to-r from-transparent via-sage/20 to-transparent" />
-                <div className="border-l-4 border-terracota bg-terracota/10 px-4 py-3 rounded-r-lg">
+
+                <div className="border-l-4 border-terracota bg-terracota/10 px-5 py-4 rounded-r-lg">
                   <p className="font-body text-xs text-terracota-light font-medium uppercase tracking-wider">Não atendemos convênios</p>
                   <p className="font-body text-xs text-ivory/50 mt-1">Particular com recibo para reembolso</p>
                 </div>

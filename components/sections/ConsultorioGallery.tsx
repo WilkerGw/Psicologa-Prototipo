@@ -7,20 +7,38 @@ import SectionTitle from "@/components/ui/SectionTitle";
 const GALLERY_IMAGES = [
   {
     src: "/images/escritorio.webp",
-    alt: "Ambiente de atendimento — Consultório Vanessa Tamiello",
+    alt: "Ambiente de atendimento principal",
     caption: "Conforto e privacidade para sua jornada.",
     size: "lg:col-span-2 lg:row-span-2",
   },
   {
-    src: "/images/escritorio3.webp",
+    src: "/images/escritorio2.webp",
     alt: "Detalhes do consultório",
+    caption: "Espaço acolhedor e profissional.",
+    size: "lg:col-span-1 lg:row-span-1",
+  },
+  {
+    src: "/images/escritorio3.webp",
+    alt: "Ambiente de espera e recepção",
     caption: "Cada detalhe pensado no seu bem-estar.",
     size: "lg:col-span-1 lg:row-span-1",
   },
   {
     src: "/images/escritorio4.webp",
-    alt: "Espaço de recepção",
+    alt: "Detalhes decorativos",
     caption: "Um refúgio de calma na cidade.",
+    size: "lg:col-span-1 lg:row-span-1",
+  },
+  {
+    src: "/images/escritorio5.webp",
+    alt: "Segunda sala de atendimento",
+    caption: "Amplitude e clareza para o diálogo.",
+    size: "lg:col-span-1 lg:row-span-1",
+  },
+  {
+    src: "/images/escritorio6.webp",
+    alt: "Vista geral do espaço",
+    caption: "Profissionalismo e acolhimento.",
     size: "lg:col-span-1 lg:row-span-1",
   },
 ];
@@ -44,7 +62,7 @@ export default function ConsultorioGallery() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:h-[650px] gap-4 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3 lg:h-[850px] gap-4 md:gap-6">
           {GALLERY_IMAGES.map((img, i) => (
             <div
               key={img.src}

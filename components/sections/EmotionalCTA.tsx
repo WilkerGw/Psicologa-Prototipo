@@ -1,6 +1,7 @@
 "use client";
 
 import Button from "@/components/ui/Button";
+import Image from "next/image";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 export default function EmotionalCTA() {
@@ -25,30 +26,14 @@ export default function EmotionalCTA() {
       <div className="relative max-w-3xl mx-auto px-6 md:px-12 text-center">
         {/* Butterfly icon */}
         <div className="scroll-reveal mb-8">
-          <svg
-            viewBox="0 0 48 48"
-            fill="none"
-            className="w-14 h-14 mx-auto"
-            aria-hidden="true"
-          >
-            <path
-              d="M24 24C20 18 12 14 10 18C8 22 14 26 18 26C20 26 22 25 24 24Z"
-              className="fill-gold/60"
+          <div className="relative w-14 h-14 mx-auto brightness-0 invert opacity-60">
+            <Image
+              src="/images/logo.webp"
+              alt="Vanessa Tamiello Logo"
+              fill
+              className="object-contain"
             />
-            <path
-              d="M24 24C20 26 14 32 16 35C18 38 24 34 24 30V24Z"
-              className="fill-gold/40"
-            />
-            <path
-              d="M24 24C28 18 36 14 38 18C40 22 34 26 30 26C28 26 26 25 24 24Z"
-              className="fill-gold/60"
-            />
-            <path
-              d="M24 24C28 26 34 32 32 35C30 38 24 34 24 30V24Z"
-              className="fill-gold/40"
-            />
-            <ellipse cx="24" cy="24" rx="1.2" ry="6" className="fill-gold" />
-          </svg>
+          </div>
         </div>
 
         <h2 className="scroll-reveal font-display text-3xl md:text-4xl lg:text-5xl font-bold text-ivory leading-tight mb-6">

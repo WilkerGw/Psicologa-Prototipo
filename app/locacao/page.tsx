@@ -1,9 +1,19 @@
 "use client";
 
+import Image from "next/image";
 import SectionTitle from "@/components/ui/SectionTitle";
 import Button from "@/components/ui/Button";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Wifi, Snowflake, ShieldCheck, MapPin } from "lucide-react";
+
+const GALLERY_IMAGES = [
+  "/images/escritorio.webp",
+  "/images/escritorio2.webp",
+  "/images/escritorio3.webp",
+  "/images/escritorio4.webp",
+  "/images/escritorio5.webp",
+  "/images/escritorio6.webp",
+];
 
 const FEATURES = [
   { icon: Wifi, label: "Wi-Fi incluso" },
@@ -58,11 +68,20 @@ export default function LocacaoPage() {
           <div className="scroll-reveal mb-12">
             <SectionTitle title="Conheça os espaços" subtitle="Salas individuais, mobiliadas e climatizadas, prontas para atendimento. Disponibilidade flexível — por hora ou período." centered />
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-            {Array.from({ length: 6 }, (_, i) => (
-              <div key={i} className="scroll-reveal relative overflow-hidden rounded-xl cursor-pointer">
-                <div className="aspect-square bg-linear-to-br from-blush/60 via-sage/20 to-ivory-dark flex items-center justify-center">
-                  <span className="font-body text-xs text-charcoal/30">Sala {i + 1}</span>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+            {GALLERY_IMAGES.map((src, i) => (
+              <div key={i} className="scroll-reveal relative aspect-square overflow-hidden rounded-xl group cursor-pointer shadow-md shadow-charcoal/5">
+                <Image
+                  src={src}
+                  alt={`Sala de atendimento ${i + 1}`}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-charcoal/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <div className="bg-ivory/90 backdrop-blur-sm px-4 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                    <span className="text-charcoal font-body text-xs font-medium">Ver detalhes</span>
+                  </div>
                 </div>
               </div>
             ))}
