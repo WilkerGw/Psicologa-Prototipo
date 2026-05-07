@@ -84,7 +84,7 @@ export default function Hero() {
                 }}
               >
                 <Image
-                  src="/images/Vanessa-Tamiello.jpeg"
+                  src="/images/Vanessa-Tamiello.webp"
                   alt="Vanessa Tamiello — Psicóloga Clínica"
                   fill
                   className="object-cover"
