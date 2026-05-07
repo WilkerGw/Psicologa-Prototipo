@@ -95,6 +95,12 @@ export default function AnxietyInfo() {
 
   return (
     <section ref={ref} className="relative bg-ivory py-24 md:py-32 overflow-hidden">
+      {/* Fixed Background Image */}
+      <div 
+        className="absolute inset-0 bg-[url('/images/escritorio.webp')] bg-fixed bg-cover bg-center opacity-[0.07] pointer-events-none" 
+        aria-hidden="true"
+      />
+      
       {/* Decorative background wave */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <svg

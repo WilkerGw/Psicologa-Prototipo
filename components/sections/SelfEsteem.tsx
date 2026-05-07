@@ -26,6 +26,12 @@ export default function SelfEsteem() {
 
   return (
     <section ref={ref} className="bg-sage py-24 md:py-32 relative overflow-hidden">
+      {/* Fixed Background Image */}
+      <div
+        className="absolute inset-0 bg-[url('/images/escritorio4.webp')] bg-fixed bg-cover bg-center opacity-[0.08] pointer-events-none"
+        aria-hidden="true"
+      />
+
       {/* Decorative diagonal lines */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <svg

@@ -22,7 +22,7 @@ export default function AboutPreview() {
           <div className="scroll-reveal flex-1 w-full max-w-sm">
             <div className="relative aspect-square overflow-hidden rounded-3xl border-2 border-sage/30">
               <Image
-                src="/images/Vanessa-Tamiello.jpeg"
+                src="/images/Vanessa-Tamiello-tres.webp"
                 alt="Vanessa Tamiello — Psicóloga"
                 fill
                 className="object-cover object-top"

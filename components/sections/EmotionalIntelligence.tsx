@@ -163,6 +163,12 @@ export default function EmotionalIntelligence() {
 
   return (
     <section ref={ref} className="bg-blush py-24 md:py-32 relative overflow-hidden">
+      {/* Fixed Background Image */}
+      <div 
+        className="absolute inset-0 bg-[url('/images/escritorio3.webp')] bg-fixed bg-cover bg-center opacity-[0.06] pointer-events-none" 
+        aria-hidden="true"
+      />
+      
       {/* Decorative geometric pattern */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <svg
