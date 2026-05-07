@@ -10,6 +10,7 @@ import { Menu, X } from "lucide-react";
 const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/profissional", label: "Profissional" },
+  { href: "/tratamentos", label: "Tratamentos" },
   { href: "/consultorio", label: "Consultório" },
   { href: "/locacao", label: "Locação de Salas" },
   { href: "/contato", label: "Contato" },
